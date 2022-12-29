@@ -1,0 +1,29 @@
+.tags {
+  display: flex;
+  margin-bottom: 31px;
+  // .tags__list
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    // .tags__list_item
+    &_item {
+      display: block;
+      margin-right: 16px;
+      margin-bottom: 9px;
+      // .tags__list_item_btn
+      &_btn {
+        padding: 11px 10px 10px 10px;
+        font-weight: 700;
+        font-size: 14px;
+        line-height: 17px;
+        text-transform: uppercase;
+        color: white;
+        border: 1px solid white;
+        &:hover {
+          background: white;
+          color: var(--cases-bg);
+        }
+      }
+    }
+  }
+}

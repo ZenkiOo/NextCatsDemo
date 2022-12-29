@@ -1,0 +1,14 @@
+.title {
+  margin-bottom: 24px;
+  font-weight: 700;
+  font-size: 36px;
+  color: white;
+  letter-spacing: 0.14rem;
+  // .title__counter
+  &__counter {
+    padding-left: 6px;
+    color: var(--dark-blue);
+    letter-spacing: 0.01rem;
+    font-size: 28px;
+  }
+}

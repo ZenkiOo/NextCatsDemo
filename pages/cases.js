@@ -1,7 +1,10 @@
 import React from 'react';
+import style from '../styles/cases.module.scss';
 import serverData from '../public/data.json';
-import CasesTabs from '../components/CasesTabs';
+import CasesTitle from '../components/CasesTitle';
+import CasesTags from '../components/CasesTags';
 import CasesList from '../components/CasesList';
+import ListSvg from '../components/ListSvg';
 
 export default function cases() {
   const casesTypes = {
@@ -51,9 +54,15 @@ export default function cases() {
   const data = formatData();
 
   return (
-    <div>
-      <CasesTabs {...{ data }} />
-      <CasesList {...{ data }} />
+    <div className={style.cases_page}>
+      <div className={style.cases}>
+        <div className={style.cases__body}>
+          {/* <ListSvg /> */}
+          <CasesTitle />
+          <CasesTags {...{ data }} />
+          <CasesList {...{ data }} />
+        </div>
+      </div>
     </div>
   );
 }

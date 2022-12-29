@@ -1,0 +1,21 @@
+.cases_page {
+  padding-top: 90px;
+  min-height: 100vh;
+  background-color: var(--main-bg);
+  background-image: url(../public/img/waves.png);
+  background-position: center center;
+  background-repeat: repeat-x;
+  background-size: 1440px;
+}
+.cases {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 60px 0 65px;
+  // .cases__body
+  &__body {
+    padding: 37px 20px 20px 57px;
+    background: var(--cases-bg);
+    box-shadow: 0px 4px 40px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+  }
+}

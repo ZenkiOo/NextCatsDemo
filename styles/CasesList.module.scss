@@ -1,0 +1,24 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-right: 37px;
+  // .list__item
+  &__item {
+    background-color: var(--case-bg);
+    margin-bottom: 20px;
+    width: calc(25% - 52px);
+    &:nth-child(n + 3) {
+      margin-right: 0;
+    }
+    // .list__item_body
+    &_body {
+      & p {
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+    }
+  }
+}

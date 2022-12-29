@@ -1,5 +1,7 @@
 import React from 'react';
+import style from '../styles/CasesList.module.scss';
 import { useRouter } from 'next/router';
+import parse from 'html-react-parser';
 
 function CasesList({ data }) {
   const router = useRouter();
@@ -18,13 +20,27 @@ function CasesList({ data }) {
   };
   const list = createCasesList();
 
-  const listItems = list?.map((item, id) => (
-    <div style={{ margin: 10 + 'px', display: 'block' }} key={id}>
-      <p>{item.application}</p>
-      <p>{item.developer}</p>
-    </div>
+  const listItems = list?.map((item) => (
+    <li key={item.id} className={style.list__item}>
+      <div className={style.list__item_body}>
+        <span className={style.list__item_location}>
+          {`${item.country}, ${item.city}`}
+        </span>
+        {parse(item.description, {
+          replace: (domNode) => {
+            console.log(domNode);
+          },
+        })}
+        <button className={style.list__item_btn}>посмотреть</button>
+      </div>
+      <div className={style.list__item_footer}>
+        <span className={style.list__item_footer_text}>
+          Добавлено 6.02.2020
+        </span>
+      </div>
+    </li>
   ));
-  return <div>{listItems}</div>;
+  return <ul className={style.list}>{listItems}</ul>;
 }
 
 export default CasesList;

@@ -1,9 +1,10 @@
 import React from 'react';
+import style from '../styles/CasesTags.module.scss';
 import { useRouter } from 'next/router';
+import { nanoid } from 'nanoid';
 
-export default function CasesTabs({ data }) {
+export default function CasesTags({ data }) {
   const router = useRouter();
-//   console.log(data);
 
   const removeQueryParam = (param) => {
     const { pathname, query } = router;
@@ -14,11 +15,7 @@ export default function CasesTabs({ data }) {
     });
   };
 
-  const handleTabClick = (name) => {
-    // console.log(router);
-    // console.log(name);
-    // const queryNames = Object.entries(casesTypes);
-    // const item = queryNames.find((item) => item[1] === name);
+  const handleTagClick = (name) => {
     if (router.query[name]) removeQueryParam(name);
     else {
       const { pathname } = router;
@@ -31,17 +28,23 @@ export default function CasesTabs({ data }) {
       );
     }
   };
-
-  const tabs = data.map((item, i) => {
+  const tagsList = data.map((item) => ({ item, id: nanoid() }));
+  const tags = tagsList.map((listItem) => {
+    const { item, id } = listItem;
     return (
-      <li key={i}>
-        <button onClick={() => handleTabClick(item[1].category)}>{item[0]}</button>
+      <li key={id} className={style.tags__list_item}>
+        <button
+          className={style.tags__list_item_btn}
+          onClick={() => handleTagClick(item[1].category)}
+        >
+          {item[0]}
+        </button>
       </li>
     );
   });
   return (
-    <div>
-      <ul>{tabs}</ul>
+    <div className={style.tags}>
+      <ul className={style.tags__list}>{tags}</ul>
     </div>
   );
 }
